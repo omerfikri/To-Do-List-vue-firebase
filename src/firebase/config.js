@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, serverTimestamp } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAyltMd-zBdBT1-sQKv42DGf7a-sW2tyOI",
@@ -8,12 +9,13 @@ const firebaseConfig = {
   projectId: "blog-ee06b",
   storageBucket: "blog-ee06b.appspot.com",
   messagingSenderId: "117542492649",
-  appId: "1:117542492649:web:14d76d76f64764e6651378",
+  appId: "1:117542492649:web:13b504977e07286d651378",
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 const auth = getAuth();
 const timestamp = serverTimestamp();
+const storageRef = getStorage();
 
-export { db, timestamp, auth };
+export { db, timestamp, auth, storageRef };
