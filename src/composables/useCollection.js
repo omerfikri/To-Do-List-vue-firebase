@@ -8,7 +8,8 @@ const useCollection = (koleksiyon) => {
   const addDocument = async (doc) => {
     hataCollection.value = null;
     try {
-      await addDoc(collection(db, koleksiyon), doc);
+      const res = await addDoc(collection(db, koleksiyon), doc);
+      return res;
     } catch (error) {
       hataCollection.value = "Document Doesn't Create ";
     }

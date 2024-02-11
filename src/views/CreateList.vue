@@ -19,6 +19,7 @@
   import useCollecton from "../composables/useCollection";
   import getUser from "@/composables/getUser";
   import { timestamp } from "@/firebase/config";
+  import { useRouter } from "vue-router";
 
   export default {
     setup() {
@@ -28,6 +29,7 @@
 
       const file = ref(null);
       const fileHata = ref(null);
+      const router = useRouter();
 
       const types = ["image/png", "image/jpeg"];
 
@@ -40,7 +42,7 @@
       const handleSubmit = async () => {
         if (file.value) {
           await uploadImage(file.value);
-          await addDocument({
+          const res = await addDocument({
             title: title.value,
             description: description.value,
             userId: kullanici.value.uid,
@@ -53,6 +55,7 @@
           });
           if (!hataCollection.value) {
             console.log("create list");
+            router.push({ name: "ListDetails", params: { id: res.id } });
           }
         }
       };

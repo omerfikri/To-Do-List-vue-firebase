@@ -1,5 +1,10 @@
 import { storageRef } from "@/firebase/config";
-import { ref as Ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {
+  ref as Ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
 import { ref } from "vue";
 
 import getUser from "./getUser";
@@ -24,7 +29,16 @@ const useStorage = () => {
       console.log(hata.value);
     }
   };
-  return { uploadImage, url, filePath, hata };
+
+  const deleteImage = async (path) => {
+    const storage = Ref(storageRef, path);
+    try {
+      await deleteObject(storage);
+    } catch (error) {
+      hata.value = error.message;
+    }
+  };
+  return { uploadImage, url, filePath, hata, deleteImage };
 };
 
 export default useStorage;
