@@ -13,8 +13,10 @@
           <button @click="handleClick">Çıkış</button>
         </div>
         <div v-if="!kullanici">
-          <router-link class="btn" :to="{ name: 'Signup' }">Üye Ol</router-link>
-          <router-link class="btn" :to="{ name: 'Login' }">Giriş</router-link>
+          <router-link class="btn" :to="{ name: 'Signup' }"
+            >Sign In</router-link
+          >
+          <router-link class="btn" :to="{ name: 'Login' }">Login</router-link>
         </div>
       </div>
     </nav>

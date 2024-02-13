@@ -1,11 +1,12 @@
 <template>
   <div>
     <form @submit.prevent="handleSubmit">
-      <h4>Create List</h4>
+      <h4>Create Job</h4>
       <input type="text" placeholder="Title" v-model="title" />
       <textarea placeholder="List Description" v-model="description"></textarea>
       <label>Description İmage</label>
       <input type="file" @change="handleChange" />
+      <label>Intended End Date</label>
       <input type="datetime-local" v-model="date" />
       <div class="error">{{ fileHata }}</div>
       <button>Create List</button>
